@@ -1,4 +1,4 @@
-
+<a href="{{ route('posts.create') }}">Criar novo post</a>
 <hr>
 
 @if(session('message'))
@@ -13,3 +13,4 @@
     <p>{{ $post->title }} [ <a href="{{ route('posts.show', $post->id) }}">Ver</a> ] [ <a href="{{ route('posts.edit', $post->id) }}">Editar</a> ]</p>
 @endforeach
 <hr>
+{{ $posts->links() }}

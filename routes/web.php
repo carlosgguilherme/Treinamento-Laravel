@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::update('/posts/update/{id}', [PostController::class, 'update'])->name('posts.update');
+Route::put('/posts/update/{id}', [PostController::class, 'update'])->name('posts.update');
 Route::get('/posts/edit/{id}', [PostController::class, 'edit'])->name('posts.edit');
 Route::delete('/posts/{id}', [PostController::class, 'destroy'])->name('posts.destroy');
 Route::post('/posts', [PostController::class, 'store'])->name('posts.store');

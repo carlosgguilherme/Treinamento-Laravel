@@ -9,6 +9,7 @@
 
 <form action="{{ route('posts.update', $post->id) }}" method="post">
     @csrf
+    @method('PUT')
     <input type="text" name="title" id="title" placeholder="Titulo" value="{{ $post->title }}">
     <br>
     <textarea name="content" id="content" cols="30" rows="4" placeholder="Conteudo">{{ $post->content }}</textarea>

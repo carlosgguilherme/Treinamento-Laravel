@@ -10,7 +10,7 @@ class PostController extends Controller
 {
   public function index()
   {
-    $posts = Post::get();
+    $posts = Post::paginate();
    
     return view('admin.posts.index',compact('posts'));
 
@@ -20,7 +20,9 @@ class PostController extends Controller
   }
   public function store(StoreUpdatePost $request){
     $post = Post::create($request->all());
-    return redirect()->route('posts.index');
+    return redirect()
+      ->route('posts.index')
+      ->with('message', 'Post criado com sucesso');
   }
   public function show($id){
     //$post = Post::where('id', $id)->first();
@@ -49,11 +51,14 @@ class PostController extends Controller
     }
     return view('admin.posts.edit', compact('post'));
   }
-  public function update($id){
+  public function update(StoreUpdatePost $request, $id){
     if(!$post = Post::find($id)){
       return redirect()->back();
   }
-  dd('Editando o post : {$post->id}');
+  $post->update($request->all());
+  return redirect()
+  ->route('posts.index') 
+  ->with('message', 'Post alterado com sucesso');
 
   }
 }
